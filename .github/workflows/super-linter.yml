@@ -1,17 +1,22 @@
 name: Super Linter
 
 on:
-  push:
-    branches-ignore: [master]
-    # Remove the line above to run when pushing to master
-  pull_request:
-    branches: [master]
+  workflow_dispatch:
+    
+permissions: read-all
 
 jobs:
   build:
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      statuses: write # for github/super-linter to mark status of each linter run
     name: Lint Code Base
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@rc
+        with:
+          egress-policy: audit
       - uses: actions/checkout@v2.4.0
       - uses: github/super-linter@v4.8.5
         env:
