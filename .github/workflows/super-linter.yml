@@ -16,7 +16,8 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@rc
         with:
-          egress-policy: audit
+          allowed-endpoints: 
+            github.com:443
       - uses: actions/checkout@v2.4.0
       - uses: github/super-linter@v4.8.5
         env:
