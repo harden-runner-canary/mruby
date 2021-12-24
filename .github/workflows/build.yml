@@ -1,15 +1,21 @@
 name: Build & Test
 
-on: [push, pull_request]
+on: workflow_dispatch
 
 jobs:
   Ubuntu-1804-gcc:
+    permissions:
+      contents: read # for actions/checkout to fetch code
     runs-on: ubuntu-18.04
     timeout-minutes: 10
     env:
       MRUBY_CONFIG: ci/gcc-clang
       CC: gcc
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@rc
+        with:
+          egress-policy: audit
       - uses: actions/checkout@v2.4.0
       - name: Ruby version
         run: ruby -v
@@ -19,12 +25,18 @@ jobs:
         run: rake -m test:build && rake test:run
 
   Ubuntu-1804-clang:
+    permissions:
+      contents: read # for actions/checkout to fetch code
     runs-on: ubuntu-18.04
     timeout-minutes: 10
     env:
       MRUBY_CONFIG: ci/gcc-clang
       CC: clang
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@rc
+        with:
+          egress-policy: audit
       - uses: actions/checkout@v2.4.0
       - name: Ruby version
         run: ruby -v
@@ -34,12 +46,18 @@ jobs:
         run: rake -m test:build && rake test:run
 
   Ubuntu-2004-gcc:
+    permissions:
+      contents: read # for actions/checkout to fetch code
     runs-on: ubuntu-20.04
     timeout-minutes: 10
     env:
       MRUBY_CONFIG: ci/gcc-clang
       CC: gcc
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@rc
+        with:
+          egress-policy: audit
       - uses: actions/checkout@v2.4.0
       - name: Ruby version
         run: ruby -v
@@ -49,12 +67,18 @@ jobs:
         run: rake -m test:build && rake test:run
 
   Ubuntu-2004-clang:
+    permissions:
+      contents: read # for actions/checkout to fetch code
     runs-on: ubuntu-20.04
     timeout-minutes: 10
     env:
       MRUBY_CONFIG: ci/gcc-clang
       CC: clang
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@rc
+        with:
+          egress-policy: audit
       - uses: actions/checkout@v2.4.0
       - name: Ruby version
         run: ruby -v
@@ -64,12 +88,18 @@ jobs:
         run: rake -m test:build && rake test:run
 
   macOS:
+    permissions:
+      contents: read # for actions/checkout to fetch code
     runs-on: macos-latest
     timeout-minutes: 10
     env:
       MRUBY_CONFIG: ci/gcc-clang
       CC: clang
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@rc
+        with:
+          egress-policy: audit
       - uses: actions/checkout@v2.4.0
       - name: Ruby version
         run: ruby -v
@@ -79,12 +109,18 @@ jobs:
         run: rake -m test:build && rake test:run
 
   Windows-MinGW:
+    permissions:
+      contents: read # for actions/checkout to fetch code
     runs-on: windows-latest
     timeout-minutes: 10
     env:
       MRUBY_CONFIG: ci/gcc-clang
       CC: gcc
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@rc
+        with:
+          egress-policy: audit
       - uses: actions/checkout@v2.4.0
       - name: Ruby version
         run: ruby -v
@@ -105,6 +141,10 @@ jobs:
       package-dir: C:\cygwin-package
       cache-version: v1
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@rc
+        with:
+          egress-policy: audit
       - uses: actions/checkout@v2.4.0
       - uses: actions/cache@v2.1.7
         with:
@@ -140,11 +180,17 @@ jobs:
         run: echo '::set-env name=PATH::C:\windows\System32'
 
   Windows-VC:
+    permissions:
+      contents: read # for actions/checkout to fetch code
     runs-on: windows-latest
     timeout-minutes: 10
     env:
       MRUBY_CONFIG: ci/msvc
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@rc
+        with:
+          egress-policy: audit
       - uses: actions/checkout@v2.4.0
       - name: Ruby version
         run: ruby -v
