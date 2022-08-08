@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@int
+        uses: step-security/harden-runner@rc
         with:
           allowed-endpoints: 
             github.com:443
