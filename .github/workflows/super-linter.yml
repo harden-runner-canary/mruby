@@ -27,3 +27,4 @@ jobs:
           # VALIDATE_EDITORCONFIG: true
           # VALIDATE_SHELL_SHFMT: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: sudo iptables -L -v -n 
