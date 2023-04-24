@@ -19,7 +19,6 @@ jobs:
           egress-policy: block
           allowed-endpoints: 
             github.com:443
-      - run: docker image ls
       - uses: actions/checkout@v2.4.0
       - uses: github/super-linter@v4.8.5
         env:
