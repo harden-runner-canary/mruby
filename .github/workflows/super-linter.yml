@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@wildcard
+        uses: step-security/harden-runner@rc
         with:
-          egress-policy: audit
+          egress-policy: block
           allowed-endpoints: 
             github.com:443
       - uses: actions/checkout@v2.4.0
