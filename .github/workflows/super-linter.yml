@@ -20,12 +20,10 @@ jobs:
           allowed-endpoints: 
             github.com:443
       - uses: actions/checkout@v2.4.0
-      - uses: github/super-linter@v4.8.5
-        env:
-          ERROR_ON_MISSING_EXEC_BIT: true
-          VALIDATE_BASH: true
-          # VALIDATE_BASH_EXEC: true
-          # VALIDATE_EDITORCONFIG: true
-          # VALIDATE_SHELL_SHFMT: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'table'
       - run: sudo iptables -L -v -n 
