@@ -20,6 +20,7 @@ jobs:
           allowed-endpoints: 
             github.com:443
             registry-1.docker.io:443
+            auth.docker.io:443
       - uses: actions/checkout@v2.4.0
       - name: Run Docker container with outbound call
         run: docker run curlimages/curl:latest https://httpbin.org/get
