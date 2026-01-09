@@ -24,5 +24,5 @@ jobs:
             Logo production.cloudflare.docker.com:443
       - uses: actions/checkout@v2.4.0
       - name: Run Docker container with outbound call
-        run: docker run curlimages/curl:latest https://httpbin.org/get
+        run: docker run curlimages/curl:latest https://google.com
       - run: sudo iptables -L -v -n 
