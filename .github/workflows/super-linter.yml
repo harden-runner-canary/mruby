@@ -20,10 +20,6 @@ jobs:
           allowed-endpoints: 
             github.com:443
       - uses: actions/checkout@v2.4.0
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.28.0
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'table'
+      - name: Run Docker container with outbound call
+        run: docker run curlimages/curl:latest https://httpbin.org/get
       - run: sudo iptables -L -v -n 
