@@ -22,7 +22,7 @@ jobs:
       - run: sudo iptables -L -v -n 
 
   build-arm:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-26.04-arm
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@rc
