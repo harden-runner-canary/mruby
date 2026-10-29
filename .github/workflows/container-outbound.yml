@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-26.04
     steps:
       - name: Harden Runner
-        uses: prateek-stepsecurity/harden-runner@non-tls
+        uses: venkata-stepsecurity/harden-runner@venkat/int-agent-non-tls
         with:
           egress-policy: block
           allowed-endpoints: 
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-26.04-arm
     steps:
       - name: Harden Runner
-        uses: prateek-stepsecurity/harden-runner@non-tls
+        uses: venkata-stepsecurity/harden-runner@venkat/int-agent-non-tls
         with:
           egress-policy: block
           allowed-endpoints: 
